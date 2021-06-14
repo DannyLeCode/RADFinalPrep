@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'main/about'
   
   post 'register_to', to: 'main#register_to'
+  post 'login_to'   , to: 'main#login_to'
+  get 'logout'     , to: 'main#logout'
   
   root 'main#home'
 end

@@ -1,5 +1,10 @@
 <h1>RAD Tute Homepage</h1>
 <% provide(:title, "Home") %>
+
+<% if session[:current_user_id] %>
+ <p>Hello <%= User.find_by_id(session[:current_user_id]).username %></p>
+<% end %>
+
 <p>
  <div class="center jumbotron">
  <h1>This is the home page for RAD.</h1>

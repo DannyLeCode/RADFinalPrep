@@ -1,6 +1,20 @@
+<% provide(:title, 'Login') %>
 <h1>Login</h1>
-<% provide(:title, "login") %>
-<p>
- This is the login page for RAD.
- <a href="https://www.rmit.edu.au/"> Visit me here</a>.
-</p>
+<div class="row">
+ <div class="col-md-6 col-md-offset-3">
+ <%= form_with url: login_to_path() do |f| %>
+   <% if notice %>
+   <div id="error_messages">
+   <div class="alert alert-danger">
+   <p><%= notice %></p>
+   </div>
+   </div>
+   <% end %>
+   <%= f.label :username %>
+   <%= f.text_field :username, class: 'form-control', :required => true %>
+   <%= f.label :password %>
+   <%= f.password_field :password, class: 'form-control', :required => true %>
+   <%= f.submit "Submit", class: "btn btn-primary" %>
+ <% end %>
+ </div>
+</div>

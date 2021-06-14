@@ -1,15 +1,20 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" style="position:relative">
  <div class="container">
  <%= link_to "RAD App", '#', id: "logo" %>
  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="nav navbar-nav navbar-right" style="padding-right: 2em;">
     <li class="nav-item"><a class="nav-link" href=<%= root_path %>>Home</a></li>
+    <% if !session[:current_user_id] %>
     <li class="nav-item"><a class="nav-link" href=<%= main_login_url %>>Login</a></li>
     <li class="nav-item"><a class="nav-link" href=<%= main_registration_url %>>Registration</a></li>
+    <% end %>
     <li class="nav-item"><a class="nav-link" href=<%= main_products_url %>>Products</a></li>
     <li class="nav-item"><a class="nav-link" href=<%= main_checkout_url %>>Checkout</a></li>
     <li class="nav-item"><a class="nav-link" href=<%= main_about_url %>>About</a></li>
+    <% if session[:current_user_id] %>
+    <li class="nav-item"><a class="nav-link" href=<%= logout_path %>>Logout</a></li>
+    <% end %>
     </ul>
    </div>
  </nav>
