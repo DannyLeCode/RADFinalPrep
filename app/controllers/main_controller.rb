@@ -2,11 +2,16 @@ class MainController < ApplicationController
   
   def register_to
    @user = User.new(user_params)
-   debugger
    if @user.save
      redirect_to root_path
    else
-     redirect_to main_login_url
+     @error_string = "Error \n"
+     if @user.errors.any?
+       @user.errors.full_messages.each do |message| 
+         @error_string += (message + "\n")
+       end
+     end  
+     redirect_to main_registration_url, notice: @error_string
    end
   end
   

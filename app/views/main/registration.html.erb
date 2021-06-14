@@ -3,6 +3,13 @@
 <div class="row">
  <div class="col-md-6 col-md-offset-3">
  <%= form_with url: register_to_path() do |f| %>
+   <% if notice %>
+   <div id="error_messages">
+   <div class="alert alert-danger">
+   <p><%= notice %></p>
+   </div>
+   </div>
+   <% end %>
    <%= f.label :username %>
    <%= f.text_field :username, class: 'form-control' %>
    <%= f.label :email %>
