@@ -23,3 +23,5 @@ rails generate model Cart
 
 t.belongs_to :producr, null: false
 t.belongs_to :user, null: false
+
+rails generate migration add_password_digest_to_user
