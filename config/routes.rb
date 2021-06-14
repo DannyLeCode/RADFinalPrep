@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'main/products'
+  get 'main/checkout'
   get 'main/home'
   get 'main/login'
   get 'main/about'
