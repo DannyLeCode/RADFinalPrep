@@ -1,2 +1,6 @@
-<h1>Main#products</h1>
-<p>Find me in app/views/main/products.html.erb</p>
+<h1>Products</h1>
+
+<% Product.all.each do |product| %>
+<%= image_tag(product.asseturl, :alt => "RoR icon", height: '200', width: '130')%>
+<p><%= product.name %></p>
+<% end %>

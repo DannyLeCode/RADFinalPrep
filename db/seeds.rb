@@ -20,6 +20,6 @@ i5.save
 
 User.new
 u1 = User.new(username: "Username1", email: "1@test.com", password: "Pane1234", password_confirmation: "Pane1234")
-u2 = User.new(username: "Username1", email: "2@gmail.com", password: "Rails2021", password_confirmation: "Rails2021")
+u2 = User.new(username: "Username2", email: "2@gmail.com", password: "Rails2021", password_confirmation: "Rails2021")
 u1.save
 u2.save

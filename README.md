@@ -26,3 +26,12 @@ t.belongs_to :user, null: false
 
 rails generate migration add_password_digest_to_user
 add_column :users, :password_digest, :string
+
+rails generate migration CreateProductsUsers
+      t.integer :product_id, null: false
+      t.integer :user_id, null: false 
+      
+has_and_belongs_to_many :products
+has_and_belongs_to_many :users
+
+rails generate model cart
