@@ -1,5 +1,6 @@
 class MainController < ApplicationController
-  
+include MainHelper
+   
 def register_to
 @user = User.new(user_params)
     if @user.save
@@ -27,18 +28,33 @@ else
 end
 end
   
- def add_item_to_user
-   
+ def add_to
+    Cart.new
+    @cart = Cart.new(cart_params)
+    if @cart.save
+     redirect_to main_checkout_url
+    else
+     redirect_to :back
+    end
  end
   
  def logout
     session[:current_user_id] = nil
     redirect_to root_path
  end 
-  
+ 
+ def remove_items
+   @cart = Cart.where(:user_id => params[:userId])
+   @cart.each do |cartitem| 
+    cartitem.delete
+   end
+ end
+ 
  private
    def user_params
     params.permit(:username, :email, :password, :password_confirmation)
    end
-   
+   def cart_params
+    params.permit(:id,:product_id,:user_id,:size,:colour,:quantity)
+   end
 end

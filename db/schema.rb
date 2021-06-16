@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_032705) do
     t.string "size"
     t.string "colour"
     t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_carts_on_product_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end

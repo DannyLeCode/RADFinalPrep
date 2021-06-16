@@ -1,2 +1,21 @@
-<h1>Main#checkout</h1>
-<p>Find me in app/views/main/checkout.html.erb</p>
+<h1>Checkout</h1>
+
+<% @id = session[:current_user_id] %>
+<% @cart = Cart.where(:user_id => @id) %>
+<% @cart.each do |cartitem| %>
+  <% @product = Product.find_by id: cartitem.product_id %>
+  <%= image_tag(@product.asseturl, :alt => "RoR icon", height: '200', width: '130')%>
+  <h3><%= @product.name %></h3>
+  <h3>Price:</h3><td><%= @product.price %></td>
+  <h3>Size:</h3><td><%= cartitem.size %></td>
+  <h3>Colour:</h3><td><%= cartitem.colour %></td>    
+  <h3>Quantity:</h3><td><%= cartitem.quantity %></td>
+  </br>
+<% end %>
+<h3>Total: $<%=total_cost(@id) %></h3> 
+<%= form_with url: remove_items_path() do |form| %>
+  <%= form.hidden_field :userId, value: @id %>
+  <div class = "mb-3">
+    <%= form.submit 'Checkout', method: :post %>
+  </div>
+<% end %>    

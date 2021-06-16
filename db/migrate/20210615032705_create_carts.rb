@@ -6,7 +6,6 @@ class CreateCarts < ActiveRecord::Migration[5.2]
       t.string :size
       t.string :colour
       t.integer :quantity
-      t.timestamps
     end
   end
 end
